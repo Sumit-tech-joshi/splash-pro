@@ -4,7 +4,7 @@ const features = [
     { icon: "⏱️", title: "Flexible Booking", desc: "Schedule at your convenience." },
   ];
   
-  const ServiceIcons = () => {
+  const ServiceSection = () => {
     return (
       <section className="bg-white py-12 px-4 text-center space-y-10">
         <h2 className="text-2xl md:text-4xl font-semibold">Find Your Happy Place in a Clean Home</h2>
@@ -21,5 +21,5 @@ const features = [
     );
   };
   
-  export default ServiceIcons;
+  export default ServiceSection;
   
