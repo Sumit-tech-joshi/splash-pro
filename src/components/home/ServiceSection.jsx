@@ -10,7 +10,7 @@ import cleaningBrush from "../../assets/cleaning_brush.svg";
 
 const BenefitSection = () => {
   return (
-    <section class="bg-white py-16 px-6 sm:px-10 lg:px-20">
+    <section class="bg-white py-16 px-6 sm:px-10 lg:px-20 text-lg leading-7">
       <div class="max-w-7xl mx-auto">
         <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
           Our Cleaning Specialties
@@ -20,7 +20,7 @@ const BenefitSection = () => {
           {/* <!-- Residential Cleaning --> */}
           <div class="flex flex-col lg:flex-row gap-10 items-center">
             <img
-              src={cleanImageOne}
+              src={cleanImageTwo}
               alt="Residential Cleaning"
               class="w-full lg:w-1/2 rounded-lg shadow-md object-cover"
             />
@@ -34,9 +34,9 @@ const BenefitSection = () => {
                 precious moments for what matters – more laughter, memories, and
                 time with loved ones.
               </p>
-              <ul class="space-y-3 text-sm text-gray-700 text-lg leading-7">
-                <li className="flex ">
-                  <img src={shine} className="w-10 h-10 mt-1 shrink-0" />
+              <ul class="text-lg text-gray-700 text-lg">
+                <li className="flex mt-8">
+                  <img src={shine} className="w-20 h-20 mt-1 shrink-0" />
                   <div>
                     <div className="font-bold">Regular Cleaning</div>
                     <p>
@@ -46,29 +46,44 @@ const BenefitSection = () => {
                   </div>
                 </li>
 
-                <li>
-                  <strong>Initial & Deep Cleaning:</strong> Perfect for
-                  first-timers or heavy cleans, taking up to twice the usual
+                <li className="flex mt-8">
+                  <img src={bucket} className="w-20 h-20 mt-1 shrink-0" />
+                  <div>
+                    <div className="font-bold">Initial & Deep Cleaning:</div>
+                    <p>
+                    Perfect for first-timers or heavy cleans, taking up to twice the usual
                   time to get it right.
+                    </p>
+                  </div>
                 </li>
-                <li>
-                  <strong>Move Out Clean:</strong> Moving? Let us handle the
+
+                <li className="flex mt-8">
+                  <img src={cleaningKit} className="w-20 h-20 mt-1 shrink-0" />
+                  <div>
+                    <div className="font-bold">Move Out Clean:</div>
+                    <p>
+                    Moving? Let us handle the
                   final shine before you say goodbye.
+                    </p>
+                  </div>
                 </li>
               </ul>
+              <div className=" mt-14 text-center">
               <a
                 href="#contact"
-                class="mt-6 inline-block btn-primary inline-block mt-10 md:mt-6 !mt-32hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+                className="inline-block btn-primary md:mt-6 !mt-32hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition"
               >
                 Request a Service
               </a>
+              </div>
+              
             </div>
           </div>
 
           {/* <!-- Janitorial Cleaning --> */}
           <div class="flex flex-col lg:flex-row-reverse gap-10 items-center">
             <img
-              src={cleanImageTwo}
+              src={cleanImageOne}
               alt="Janitorial Cleaning"
               class="w-full lg:w-1/2 rounded-lg shadow-md object-cover"
             />
@@ -81,7 +96,7 @@ const BenefitSection = () => {
                 productivity with our janitorial services. We keep your
                 environment clean, healthy, and professional.
               </p>
-              <ul class="space-y-3 text-sm text-gray-700">
+              <ul class="text-gray-700">
                 <li>
                   <strong>Tailored Solutions:</strong> Custom cleaning plans
                   that fit your business and space needs perfectly.
@@ -120,7 +135,7 @@ const BenefitSection = () => {
                 come in to polish every inch of your space to perfection — ready
                 for move-in or showing off.
               </p>
-              <ul class="space-y-3 text-sm text-gray-700">
+              <ul class="text-lg text-gray-700">
                 <li>
                   <strong>Detail-Oriented Shine:</strong> Every surface and
                   corner meticulously cleaned and inspected.

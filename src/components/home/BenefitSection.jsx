@@ -31,7 +31,7 @@ const features = [
 
 const BenefitSection = () => {
   return (
-    <section className="bg-white py-16 px-4 md:px-10">
+    <section className="bg-white py-16 px-4 md:px-10 text-lg">
       <div className="max-w-5xl mx-auto text-center space-y-6">
         <h2 className="text-2xl md:text-4xl font-semibold text-dark">
           Find Your Happy Place in a Clean Home – Without the Fuss
@@ -41,7 +41,7 @@ const BenefitSection = () => {
         </p>
       </div>
 
-      <div className="grid gap-10 mt-14 md:grid-cols-2 max-w-6xl mx-auto">
+      <div className="grid gap-[6rem] mt-14 md:grid-cols-2 max-w-6xl mx-auto">
         {features.map((f, i) => (
           <motion.div
             key={i}
@@ -54,11 +54,11 @@ const BenefitSection = () => {
             <img
               src={f.icon}
               alt={f.title}
-              className="w-10 h-10 mt-1 shrink-0"
+              className="w-20 h-20 mt-1 shrink-0"
             />
             <div>
-              <h3 className="text-lg font-semibold text-dark">{f.title}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed mt-1">
+              <h3 className="font-semibold text-dark">{f.title}</h3>
+              <p className="text-gray-600 leading-relaxed mt-1">
                 {f.desc}
               </p>
             </div>

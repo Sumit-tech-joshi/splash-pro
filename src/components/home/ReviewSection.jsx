@@ -18,7 +18,7 @@ const ReviewSection = () => {
           <img src="https://i.pravatar.cc/50?img=1" alt="Avatar" class="w-12 h-12 rounded-full border"/>
           <div class="text-left">
             <h4 class="font-semibold text-gray-800">Emily R.</h4>
-            <p class="text-sm text-gray-500">Google Review</p>
+            <p class="text-lg text-gray-500">Google Review</p>
           </div>
         </div>
         <p class="text-gray-700 mb-4 italic">
@@ -33,7 +33,7 @@ const ReviewSection = () => {
           <img src="https://i.pravatar.cc/50?img=2" alt="Avatar" class="w-12 h-12 rounded-full border"/>
           <div class="text-left">
             <h4 class="font-semibold text-gray-800">Jason L.</h4>
-            <p class="text-sm text-gray-500">Facebook Review</p>
+            <p class="text-lg text-gray-500">Facebook Review</p>
           </div>
         </div>
         <p class="text-gray-700 mb-4 italic">
@@ -47,7 +47,7 @@ const ReviewSection = () => {
           <img src="https://i.pravatar.cc/50?img=3" alt="Avatar" class="w-12 h-12 rounded-full border"/>
           <div class="text-left">
             <h4 class="font-semibold text-gray-800">Samantha K.</h4>
-            <p class="text-sm text-gray-500">Google Review</p>
+            <p class="text-lg text-gray-500">Google Review</p>
           </div>
         </div>
         <p class="text-gray-700 mb-4 italic">

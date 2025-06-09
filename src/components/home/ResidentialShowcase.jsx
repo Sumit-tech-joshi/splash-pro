@@ -8,11 +8,11 @@ const ResidentialShowcase = () => {
       <div className="grid gap-6 md:grid-cols-2">
         <div>
           <img src={res1} alt="kitchen" className="rounded shadow" />
-          <p className="mt-2 text-sm text-gray-600">Detailed kitchen cleaning with focus on hygiene and aesthetics.</p>
+          <p className="mt-2 text-lg text-gray-600">Detailed kitchen cleaning with focus on hygiene and aesthetics.</p>
         </div>
         <div>
           <img src={res2} alt="bathroom" className="rounded shadow" />
-          <p className="mt-2 text-sm text-gray-600">Sparkling bathrooms cleaned top to bottom.</p>
+          <p className="mt-2 text-lg text-gray-600">Sparkling bathrooms cleaned top to bottom.</p>
         </div>
       </div>
     </section>
