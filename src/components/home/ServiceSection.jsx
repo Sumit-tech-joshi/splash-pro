@@ -51,8 +51,8 @@ const BenefitSection = () => {
                   <div>
                     <div className="font-bold">Initial & Deep Cleaning:</div>
                     <p>
-                    Perfect for first-timers or heavy cleans, taking up to twice the usual
-                  time to get it right.
+                      Perfect for first-timers or heavy cleans, taking up to
+                      twice the usual time to get it right.
                     </p>
                   </div>
                 </li>
@@ -62,21 +62,20 @@ const BenefitSection = () => {
                   <div>
                     <div className="font-bold">Move Out Clean:</div>
                     <p>
-                    Moving? Let us handle the
-                  final shine before you say goodbye.
+                      Moving? Let us handle the final shine before you say
+                      goodbye.
                     </p>
                   </div>
                 </li>
               </ul>
               <div className=" mt-14 text-center">
-              <a
-                href="#contact"
-                className="inline-block btn-primary md:mt-6 !mt-32hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition"
-              >
-                Request a Service
-              </a>
+                <a
+                  href="#contact"
+                  className="inline-block btn-primary md:mt-6 !mt-32hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+                >
+                  Request a Service
+                </a>
               </div>
-              
             </div>
           </div>
 
@@ -96,26 +95,51 @@ const BenefitSection = () => {
                 productivity with our janitorial services. We keep your
                 environment clean, healthy, and professional.
               </p>
-              <ul class="text-gray-700">
-                <li>
-                  <strong>Tailored Solutions:</strong> Custom cleaning plans
-                  that fit your business and space needs perfectly.
+
+              <ul class="text-lg text-gray-700 text-lg">
+                <li className="flex mt-8">
+                  <img src={shine} className="w-20 h-20 mt-1 shrink-0" />
+                  <div>
+                    <div className="font-bold">Tailored Solutions:</div>
+                    <p>
+                      Custom cleaning plans that fit your business and space
+                      needs perfectly.
+                    </p>
+                  </div>
                 </li>
-                <li>
-                  <strong>Excellence in Every Sweep:</strong> Reliable,
-                  quality-first cleaning delivered by professionals.
+
+                <li className="flex mt-8">
+                  <img
+                    src={cleaningBrush}
+                    className="w-20 h-20 mt-1 shrink-0"
+                  />
+                  <div>
+                    <div className="font-bold">Excellence in Every Sweep:</div>
+                    <p>
+                      Reliable, quality-first cleaning delivered by
+                      professionals.
+                    </p>
+                  </div>
                 </li>
-                <li>
-                  <strong>Seamless & Efficient:</strong> We work on your
-                  schedule to avoid business disruption.
+
+                <li className="flex mt-8">
+                  <img src={cleaningKit} className="w-20 h-20 mt-1 shrink-0" />
+                  <div>
+                    <div className="font-bold">Seamless & Efficient:</div>
+                    <p>
+                      We work on your schedule to avoid business disruption.
+                    </p>
+                  </div>
                 </li>
               </ul>
-              <a
-                href="#contact"
-                class="mt-6 inline-block btn-primary inline-block mt-10 md:mt-6 !mt-32hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition"
-              >
-                Request a Walk Through
-              </a>
+              <div className=" mt-14 text-center">
+                <a
+                  href="#contact"
+                  className="inline-block btn-primary md:mt-6 !mt-32hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+                >
+                  Request a Walk Through
+                </a>
+              </div>
             </div>
           </div>
 
