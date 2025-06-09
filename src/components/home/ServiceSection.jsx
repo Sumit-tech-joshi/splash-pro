@@ -1,72 +1,151 @@
 import React from "react";
-import iconTime from "../../assets/time.svg";
-import iconSmile from "../../assets/smile.svg";
-import iconSparkle from "../../assets/sparkle.svg";
-import iconLocal from "../../assets/home.svg";
-import { motion } from "framer-motion";
+import cleanImageOne from "../../assets/cleaning_one.jpg";
+import cleanImageTwo from "../../assets/cleaning_two.jpg";
+import cleanImageThree from "../../assets/cleaning_three.jpg";
+import cleanImageFour from "../../assets/cleaning_four.jpg";
+import shine from "../../assets/shine.svg";
+import bucket from "../../assets/bucket.svg";
+import cleaningKit from "../../assets/cleaning_kit.svg";
+import cleaningBrush from "../../assets/cleaning_brush.svg";
 
-const features = [
-  {
-    icon: iconTime,
-    title: "Hello, Extra Time!",
-    desc: "Thanks to our speedy and thorough cleaning magic, say goodbye to lost weekends spent cleaning and hello to hours you can spend however you wish.",
-  },
-  {
-    icon: iconSmile,
-    title: "Stress Less, Smile More",
-    desc: "Let our friendly team take the cleaning load off your shoulders, bringing you peace of mind and a clutter-free home that feels just right.",
-  },
-  {
-    icon: iconSparkle,
-    title: "Trust in a Professional Clean",
-    desc: "Count on us to make your place shine bright with every visit. We’re all about bringing that dependable shine and comfort to your space.",
-  },
-  {
-    icon: iconLocal,
-    title: "Locally Owned and Grown",
-    desc: "Proudly serving our community, you'll take comfort in knowing we're a locally owned business in the Comox Valley that grows alongside you and your neighbours.",
-  },
-];
-
-
-const ServiceSection = () => {
+const BenefitSection = () => {
   return (
-    <section className="bg-white py-16 px-4 md:px-10">
-      <div className="max-w-5xl mx-auto text-center space-y-6">
-        <h2 className="text-2xl md:text-4xl font-semibold text-dark">
-          Find Your Happy Place in a Clean Home – Without the Fuss
+    <section class="bg-white py-16 px-6 sm:px-10 lg:px-20">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
+          Our Cleaning Specialties
         </h2>
-        <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-          Tired of chasing after that never-ending list of cleaning chores? Let us introduce you to the comfort of a perfectly clean home made easy with our help. Imagine having more time to enjoy what you love most.
-        </p>
-      </div>
 
-      <div className="grid gap-10 mt-14 md:grid-cols-2 max-w-6xl mx-auto">
-        {features.map((f, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: i * 0.2 }}
-            viewport={{ once: true }}
-            className="flex items-start space-x-5"
-          >
+        <div class="grid gap-40">
+          {/* <!-- Residential Cleaning --> */}
+          <div class="flex flex-col lg:flex-row gap-10 items-center">
             <img
-              src={f.icon}
-              alt={f.title}
-              className="w-10 h-10 mt-1 shrink-0"
+              src={cleanImageOne}
+              alt="Residential Cleaning"
+              class="w-full lg:w-1/2 rounded-lg shadow-md object-cover"
             />
-            <div>
-              <h3 className="text-lg font-semibold text-dark">{f.title}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed mt-1">
-                {f.desc}
+            <div class="lg:w-1/2">
+              <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                Let's Make Your Home a Beacon of Cleanliness and Comfort
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Feeling swamped by endless cleaning tasks? Let Betty's Best
+                Cleaning Services whisk away the worry! We give you back
+                precious moments for what matters – more laughter, memories, and
+                time with loved ones.
               </p>
+              <ul class="space-y-3 text-sm text-gray-700 text-lg leading-7">
+                <li className="flex ">
+                  <img src={shine} className="w-10 h-10 mt-1 shrink-0" />
+                  <div>
+                    <div className="font-bold">Regular Cleaning</div>
+                    <p>
+                      Maintenance cleaning on a weekly, bi-weekly, or monthly
+                      schedule tailored to your lifestyle.
+                    </p>
+                  </div>
+                </li>
+
+                <li>
+                  <strong>Initial & Deep Cleaning:</strong> Perfect for
+                  first-timers or heavy cleans, taking up to twice the usual
+                  time to get it right.
+                </li>
+                <li>
+                  <strong>Move Out Clean:</strong> Moving? Let us handle the
+                  final shine before you say goodbye.
+                </li>
+              </ul>
+              <a
+                href="#contact"
+                class="mt-6 inline-block btn-primary inline-block mt-10 md:mt-6 !mt-32hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+              >
+                Request a Service
+              </a>
             </div>
-          </motion.div>
-        ))}
+          </div>
+
+          {/* <!-- Janitorial Cleaning --> */}
+          <div class="flex flex-col lg:flex-row-reverse gap-10 items-center">
+            <img
+              src={cleanImageTwo}
+              alt="Janitorial Cleaning"
+              class="w-full lg:w-1/2 rounded-lg shadow-md object-cover"
+            />
+            <div class="lg:w-1/2">
+              <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                Boost Your Business with Clean Spaces
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Transform your workspace into a beacon of cleanliness and
+                productivity with our janitorial services. We keep your
+                environment clean, healthy, and professional.
+              </p>
+              <ul class="space-y-3 text-sm text-gray-700">
+                <li>
+                  <strong>Tailored Solutions:</strong> Custom cleaning plans
+                  that fit your business and space needs perfectly.
+                </li>
+                <li>
+                  <strong>Excellence in Every Sweep:</strong> Reliable,
+                  quality-first cleaning delivered by professionals.
+                </li>
+                <li>
+                  <strong>Seamless & Efficient:</strong> We work on your
+                  schedule to avoid business disruption.
+                </li>
+              </ul>
+              <a
+                href="#contact"
+                class="mt-6 inline-block btn-primary inline-block mt-10 md:mt-6 !mt-32hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+              >
+                Request a Walk Through
+              </a>
+            </div>
+          </div>
+
+          {/* <!-- Post-Construction Cleaning --> */}
+          <div class="flex flex-col lg:flex-row gap-10 items-center">
+            <img
+              src={cleanImageThree}
+              alt="Post Construction Cleaning"
+              class="w-full lg:w-1/2 rounded-lg shadow-md object-cover"
+            />
+            <div class="lg:w-1/2">
+              <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                Shine After the Build – Perfecting New Beginnings
+              </h3>
+              <p class="text-gray-600 mb-4">
+                As the dust settles on your new construction or renovation, we
+                come in to polish every inch of your space to perfection — ready
+                for move-in or showing off.
+              </p>
+              <ul class="space-y-3 text-sm text-gray-700">
+                <li>
+                  <strong>Detail-Oriented Shine:</strong> Every surface and
+                  corner meticulously cleaned and inspected.
+                </li>
+                <li>
+                  <strong>Move-In Magic:</strong> We make your property feel
+                  fresh, inviting, and instantly livable.
+                </li>
+                <li>
+                  <strong>Clearing the Way:</strong> Debris, dust, and
+                  construction residue are professionally removed.
+                </li>
+              </ul>
+              <a
+                href="#contact"
+                class="mt-6 inline-block btn-primary inline-block mt-10 md:mt-6 !mt-32hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+              >
+                Get My Estimate
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 
-export default ServiceSection;
+export default BenefitSection;

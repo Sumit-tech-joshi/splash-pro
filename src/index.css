@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.8s ease-out both;
+  }
+
+  .animate-slideUp {
+    animation: slideUp 0.8s ease-out both;
+  }
+
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-150 { animation-delay: 0.15s; }
+  .delay-200 { animation-delay: 0.2s; }
+}
+
 body {
   @apply font-sans text-gray-700 bg-white;
 }
@@ -14,3 +38,10 @@ body {
 .primary-color {
   color: rgb(41 122 191);;
 }
+
+@layer components {
+  .input {
+    @apply w-full border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600;
+  }
+}
+

@@ -23,8 +23,9 @@ const HeroSection = () => {
             team brings a fresh sparkle to every space.
           </p>
           <Link
-            to="/booking"
+            to="/request"
             className="btn-primary inline-block mt-10 md:mt-6 !mt-32"
+            target="_blank" rel="noopener noreferrer"
           >
             Book a Free Estimate
           </Link>
