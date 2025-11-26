@@ -85,6 +85,26 @@ export default function RequestForm() {
     return Object.keys(next).length === 0;
   };
 
+// in your RequestForm handleSubmit (client-side)
+async function submitToApi(formData) {
+  const VERCEL_API = 'https://splash-pro.vercel.app/api/submit';
+
+  // if you want to upload a file from input: convert to base64 first (client), then send as imageBase64
+  // OR, better: upload file directly to Cloudinary from client using unsigned preset, then send cloud URL.
+
+  const payload = { ...formData };
+  // Remove client-only fields if any
+  // Do not include secrets here, Vercel will attach token when calling Apps Script
+
+  const r = await fetch(VERCEL_API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  const j = await r.json();
+  return j;
+}
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.website) return; // honeypot check, silently drop spam
@@ -116,14 +136,16 @@ export default function RequestForm() {
 
       // Send to Apps Script webhook. We include token in header for security.
       if (!SHEETS_ENDPOINT) throw new Error("SHEETS_ENDPOINT not configured in .env");
-      const res = await fetch(SHEETS_ENDPOINT, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Webhook-Token": WEBHOOK_TOKEN || ""
-        },
-        body: JSON.stringify(payload),
-      });
+      // const res = await fetch(SHEETS_ENDPOINT, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     "X-Webhook-Token": WEBHOOK_TOKEN || ""
+      //   },
+      //   body: JSON.stringify(payload),
+      // });
+
+      const res = submitToApi(payload);
 
       const resultText = await res.text();
       if (!res.ok) {
