@@ -8,7 +8,7 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/request" element={<RequestForm />} />
+      <Route path="/booking" element={<RequestForm />} />
 
       {/* Add these later when built */}
       {/* <Route path="/about" element={<About />} /> */}

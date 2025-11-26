@@ -1,22 +1,48 @@
-import React from 'react';
-import HeroSection from '../components/home/HeroSection';
-import BenefitSection from '../components/home/BenefitSection';
-import ServiceSection from '../components/home/ServiceSection';
-import ReviewSection from '../components/home/ReviewSection';
-// import ResidentialShowcase from '../components/home/ResidentialShowcase';
-// import FinalQuoteSection from '../components/home/FinalQuoteSection';
+import React from "react";
+import Seo from "../components/common/Seo";
+import StickyCta from "../components/common/StickyCta";
 
-const Home = () => {
+import HeroSection from "../components/home/HeroSection";
+import ServicesShowcase from "../components/home/ServicesShowcase";
+import ReviewsTrust from "../components/home/ReviewsTrust";
+import ServiceAreas from "../components/home/ServiceAreas";
+import BenefitSection from "../components/home/BenefitSection";
+import Faq from "../components/home/Faq";
+
+export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "Splash Pro Cleaners",
+    image: "https://www.yoursite.com/logo.png",
+    telephone: "+1-(250)612-2277",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Courtenay",
+      addressRegion: "BC",
+      addressCountry: "CA",
+    },
+    areaServed: ["Courtenay", "Comox", "Cumberland", "Royston", "Union Bay"],
+    url: "https://www.yoursite.com",
+    priceRange: "$$",
+  };
+
   return (
-    <main className="space-y-12">
+    <>
+      <Seo
+        title="Splash Pro Cleaners – Trusted Cleaning in Courtenay & Comox Valley"
+        description="Residential, commercial, and post‑construction cleaning by Splash Pro Cleaners. Friendly crews, fair pricing, and great local reviews."
+        jsonLd={jsonLd}
+      />
       <HeroSection />
       <BenefitSection />
-      <ServiceSection />
-      <ReviewSection />
-      {/* <ResidentialShowcase />
-      <FinalQuoteSection /> */}
-    </main>
-  );
-};
 
-export default Home;
+      <ServicesShowcase />
+      <ReviewsTrust />
+      <ServiceAreas />
+      <Faq />
+
+      <StickyCta />
+    </>
+  );
+}

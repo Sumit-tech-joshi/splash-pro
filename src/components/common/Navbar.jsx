@@ -1,27 +1,61 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { Link as ScrollLink } from "react-scroll";
 import logo from "../../assets/spash-pro__logo.png";
-import { useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const location = useLocation();
 
-  console.log(location.pathname, {}); 
   return (
-    <nav className="bg-white shadow-md py-4 sticky top-0 z-50">
-      <div className="flex justify-between items-center mx-auto">
-        <Link to="/" className="text-xl font-bold text-primary md:pl-40">
-          <img class="w-16 h-16 " src={logo}></img>
-        </Link>
-        <div className="space-x-6 hidden md:flex  md:pr-40">
-          {location?.pathname === "/request" &&
-          <Link to="/" className="text-gray-700 hover:text-accent">Home</Link>
+    <nav className="bg-white shadow-md py-3 sticky top-0 z-50">
+      <div className="flex justify-between items-center mx-auto px-6 md:px-20">
 
-          }
-          {/* Future routes */}
-          {/* <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
-          <Link to="/booking">Book Now</Link> */}
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2">
+          <img
+            src={logo}
+            alt="Splash Pro Cleaners logo"
+            className="w-14 h-14 object-contain"
+          />
+        </Link>
+
+        <div className="space-x-6 hidden md:flex items-center">
+
+          {/* Scroll links */}
+
+          <ScrollLink
+            to="services"
+            smooth={true}
+            duration={600}
+            offset={-60}
+            className="cursor-pointer hover:text-accent text-gray-700"
+          >
+            Services
+          </ScrollLink>
+
+          <ScrollLink
+            to="reviews"
+            smooth={true}
+            duration={600}
+            offset={-60}
+            className="cursor-pointer hover:text-accent text-gray-700"
+          >
+            Reviews
+          </ScrollLink>
+
+          <ScrollLink
+            to="faq"
+            smooth={true}
+            duration={600}
+            offset={-60}
+            className="cursor-pointer hover:text-accent text-gray-700"
+          >
+            FAQ
+          </ScrollLink>
+
+          <Link to="/request" className="btn-primary px-5 py-2">
+            Book Now
+          </Link>
         </div>
       </div>
     </nav>
