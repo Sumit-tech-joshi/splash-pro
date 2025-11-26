@@ -9,16 +9,19 @@ const CLOUDINARY_CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME || "";
 const CLOUDINARY_UPLOAD_PRESET = process.env.CLOUDINARY_UPLOAD_PRESET || "";
 const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || "")
   .split(",")
-  .map(s => s.trim())
+  .map((s) => s.trim())
   .filter(Boolean);
 
-// helper: set CORS headers on every response
+// helper: always set CORS headers on the response object
 function setCors(res, originValue) {
+  // Must be exact origin (including protocol) to satisfy browser
   res.setHeader("Access-Control-Allow-Origin", originValue);
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, X-Webhook-Token"
+  );
   res.setHeader("Vary", "Origin");
-  // don't set Allow-Credentials unless you actually use credentials (cookies)
 }
 
 // Cloudinary upload (expects base64 data like data:image/jpeg;base64,...)
@@ -49,20 +52,31 @@ async function sendSendGridEmail(payload) {
 
   const bodyHtml = `
     <h3>New booking request</h3>
-    <p><strong>Name:</strong> ${payload.firstName || ""} ${payload.lastName || ""}</p>
+    <p><strong>Name:</strong> ${payload.firstName || ""} ${
+    payload.lastName || ""
+  }</p>
     <p><strong>Email:</strong> ${payload.email || ""}</p>
     <p><strong>Phone:</strong> ${payload.phone || ""}</p>
     <p><strong>Service:</strong> ${payload.serviceType || ""}</p>
     <p><strong>Date:</strong> ${payload.date1 || ""}</p>
     <p><strong>Details:</strong> ${payload.details || ""}</p>
-    <p><strong>Image:</strong> ${payload.imageUrl ? `<a href="${payload.imageUrl}">uploaded image</a>` : "none"}</p>
+    <p><strong>Image:</strong> ${
+      payload.imageUrl
+        ? `<a href="${payload.imageUrl}">uploaded image</a>`
+        : "none"
+    }</p>
     <pre>${JSON.stringify(payload, null, 2)}</pre>
   `;
 
   const msg = {
     personalizations: [{ to: [{ email: NOTIFY_EMAIL }] }],
-    from: { email: process.env.FROM_EMAIL || NOTIFY_EMAIL, name: "Splash Pro Website" },
-    subject: `New request from ${payload.firstName || ""} ${payload.lastName || ""}`,
+    from: {
+      email: process.env.FROM_EMAIL || NOTIFY_EMAIL,
+      name: "Splash Pro Website",
+    },
+    subject: `New request from ${payload.firstName || ""} ${
+      payload.lastName || ""
+    }`,
     content: [{ type: "text/html", value: bodyHtml }],
   };
 
@@ -85,22 +99,27 @@ async function sendSendGridEmail(payload) {
 
 export default async function handler(req, res) {
   const origin = req.headers.origin || "";
-
-  // decide what origin to return (must match the incoming origin or a safe/default)
+  // pick exact origin if allowed, otherwise fallback to first allowed or '*' as last resort
   const allowedOrigin = ALLOWED_ORIGINS.length
     ? ALLOWED_ORIGINS.includes(origin)
       ? origin
       : ALLOWED_ORIGINS[0]
     : "*";
 
-  // respond to preflight immediately
+  // ALWAYS set CORS headers immediately — for OPTIONS and for POST responses
+  setCors(res, allowedOrigin);
+
+  // respond to preflight
   if (req.method === "OPTIONS") {
-    setCors(res, allowedOrigin);
     return res.status(204).end();
   }
 
-  // always set CORS for actual requests
-  setCors(res, allowedOrigin);
+  // quick debug endpoint (GET /api/submit?debug=1) to inspect incoming origin and chosen origin
+  if (req.method === "GET" && req.query?.debug) {
+    return res
+      .status(200)
+      .json({ ok: true, detectedOrigin: origin, chosenOrigin: allowedOrigin });
+  }
 
   if (req.method !== "POST") {
     return res.status(405).json({ ok: false, error: "Method not allowed" });
@@ -112,12 +131,21 @@ export default async function handler(req, res) {
     // basic anti-bot honeypot
     if (payload.website) {
       // Accept but don't process bot submissions
-      return res.status(200).json({ ok: true });
+      return res
+        .status(200)
+        .json({ ok: true, message: "Received (demo response)" });
     }
 
     // basic validation (you can expand)
-    if (!payload.firstName || !payload.lastName || !payload.email || !payload.phone) {
-      return res.status(400).json({ ok: false, error: "Missing required fields" });
+    if (
+      !payload.firstName ||
+      !payload.lastName ||
+      !payload.email ||
+      !payload.phone
+    ) {
+      return res
+        .status(400)
+        .json({ ok: false, error: "Missing required fields" });
     }
 
     // optional image upload: payload.imageBase64
@@ -152,7 +180,9 @@ export default async function handler(req, res) {
         console.error("Error forwarding to Apps Script:", err);
       }
     } else {
-      console.warn("APPS_SCRIPT_URL or APPS_SCRIPT_TOKEN not configured. Skipping sheet write.");
+      console.warn(
+        "APPS_SCRIPT_URL or APPS_SCRIPT_TOKEN not configured. Skipping sheet write."
+      );
     }
 
     // Send email via SendGrid (best-effort)
@@ -164,9 +194,13 @@ export default async function handler(req, res) {
       }
     }
 
-    return res.status(200).json({ ok: true });
+    return res
+      .status(200)
+      .json({ ok: true, message: "Received (demo response)" });
   } catch (err) {
     console.error("submit handler error:", err);
-    return res.status(500).json({ ok: false, error: err.message || "Server error" });
+    return res
+      .status(500)
+      .json({ ok: false, error: err.message || "Server error" });
   }
 }
