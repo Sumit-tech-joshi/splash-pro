@@ -88,6 +88,7 @@ async function sendSendGridEmail(payload) {
     },
     body: JSON.stringify(msg),
   });
+  console.log("Message from SendGrid:  ", r);
 
   if (!r.ok) {
     const txt = await r.text();
@@ -133,7 +134,7 @@ export default async function handler(req, res) {
       // Accept but don't process bot submissions
       return res
         .status(200)
-        .json({ ok: true, message: "Received (demo response)" });
+        .json({ ok: true, message: payload });
     }
 
     // basic validation (you can expand)
@@ -169,6 +170,8 @@ export default async function handler(req, res) {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(bodyToSend),
         });
+            console.log("Message from app script", r   )
+
         if (!r.ok) {
           const txt = await r.text();
           console.warn("Apps Script returned non-OK:", txt);
@@ -186,14 +189,14 @@ export default async function handler(req, res) {
     }
 
     // Send email via SendGrid (best-effort)
-    if (SENDGRID_API_KEY && NOTIFY_EMAIL) {
-      try {
-        await sendSendGridEmail(payload);
-      } catch (err) {
-        console.warn("SendGrid send error:", err);
-      }
-    }
-
+    // if (SENDGRID_API_KEY && NOTIFY_EMAIL) {
+    //   try {
+    //     await sendSendGridEmail(payload);
+    //   } catch (err) {
+    //     console.warn("SendGrid send error:", err);
+    //   }
+    // }
+    console.log(" Reached at the end \n \n -------", APPS_SCRIPT_URL, APPS_SCRIPT_TOKEN, SENDGRID_API_KEY, NOTIFY_EMAIL);
     return res
       .status(200)
       .json({ ok: true, message: "Received (demo response)" });
