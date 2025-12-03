@@ -8,8 +8,6 @@ import React, { useState, useMemo } from "react";
  * - Adds X-Webhook-Token header for server-side validation
  */
 
-const SHEETS_ENDPOINT = process.env.REACT_APP_SHEETS_ENDPOINT;
-const WEBHOOK_TOKEN = process.env.REACT_APP_WEBHOOK_TOKEN;
 const CLOUD_NAME = process.env.REACT_APP_CLOUDINARY_CLOUD_NAME;
 const CLOUD_PRESET = process.env.REACT_APP_CLOUDINARY_UNSIGNED_PRESET;
 

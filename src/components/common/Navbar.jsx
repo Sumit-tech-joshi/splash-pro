@@ -1,21 +1,21 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Link as ScrollLink } from "react-scroll";
-import logo from "../../assets/spash-pro__logo.png";
+import logo from "../../assets/spash-pro.webp";
 
 const Navbar = () => {
   const location = useLocation();
 
   return (
     <nav className="bg-white shadow-md py-3 sticky top-0 z-50">
-      <div className="flex justify-between items-center mx-auto px-6 md:px-20">
+      <div className="flex justify-between items-center mx-auto px-6 md:px-40">
 
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <img
             src={logo}
             alt="Splash Pro Cleaners logo"
-            className="w-14 h-14 object-contain"
+            className="w-30 h-16 object-contain"
           />
         </Link>
 
