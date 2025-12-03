@@ -134,23 +134,14 @@ async function submitToApi(formData) {
       delete payload.images;
       payload.imageUrls = imageUrls;
 
-      // Send to Apps Script webhook. We include token in header for security.
-      if (!SHEETS_ENDPOINT) throw new Error("SHEETS_ENDPOINT not configured in .env");
-      // const res = await fetch(SHEETS_ENDPOINT, {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //     "X-Webhook-Token": WEBHOOK_TOKEN || ""
-      //   },
-      //   body: JSON.stringify(payload),
-      // });
 
-      const res = submitToApi(payload);
 
-      const resultText = await res.text();
+      const res = await submitToApi(payload);
+
+      console.log({res});
       if (!res.ok) {
-        console.error("Webhook error:", resultText);
-        throw new Error(resultText || "Webhook returned error");
+        console.error("Webhook error:", res?.err);
+        throw new Error(res?.err || "Webhook returned error");
       }
 
       setBanner({ type: "success", msg: "Thanks! Your request has been submitted. Splash Pro Cleaners will contact you shortly." });

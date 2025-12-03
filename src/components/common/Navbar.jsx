@@ -53,7 +53,7 @@ const Navbar = () => {
             FAQ
           </ScrollLink>
 
-          <Link to="/request" className="btn-primary px-5 py-2">
+          <Link to="/booking" className="btn-primary px-5 py-2">
             Book Now
           </Link>
         </div>
