@@ -34,7 +34,7 @@ export default function ServicesShowcase() {
               <Bullet><strong>Deep/initial clean</strong> for that first reset or special occasions</Bullet>
               <Bullet><strong>Kitchen & baths</strong> detail: sinks, taps, surfaces, floors</Bullet>
             </ul>
-            <a href="/booking" target="_blank" rel="noopener noreferrer" className="btn-primary mt-6 inline-flex">Book Free Estimate</a>
+            <a href="/booking" className="btn-primary mt-6 inline-flex">Book Free Estimate</a>
           </div>
         </div>
 
@@ -53,7 +53,7 @@ export default function ServicesShowcase() {
               <Bullet><strong>Consistent crews</strong> & checklists for quality</Bullet>
               <Bullet><strong>Supplies included</strong>—ask about eco options</Bullet>
             </ul>
-            <a href="/booking" target="_blank" rel="noopener noreferrer" className="btn-ghost mt-6 inline-flex">Request a Walk‑through</a>
+            <a href="/booking" className="btn-ghost mt-6 inline-flex">Request a Walk‑through</a>
           </div>
         </div>
 
@@ -70,7 +70,7 @@ export default function ServicesShowcase() {
               <Bullet><strong>High‑touch detail</strong> for fixtures, trim, glass</Bullet>
               <Bullet><strong>Move‑in ready</strong> handover finish</Bullet>
             </ul>
-            <a href="/booking" target="_blank" rel="noopener noreferrer" className="btn-primary mt-6 inline-flex">Get My Estimate</a>
+            <a href="/booking" className="btn-primary mt-6 inline-flex">Get My Estimate</a>
           </div>
         </div>
       </div>

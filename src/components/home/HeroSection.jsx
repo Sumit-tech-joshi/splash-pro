@@ -28,8 +28,6 @@ export default function HeroSection() {
           <div className="mt-7 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
             <Link
               to="/booking"
-              target="_blank"
-              rel="noopener noreferrer"
               className="btn-primary px-6 py-3 rounded-md text-white font-semibold shadow-md shadow-black/10"
             >
               Book a Free Estimate

@@ -11,8 +11,6 @@ export default function StickyCta(){
         </div>
         <Link
           to="/booking"
-          target="_blank"
-          rel="noopener noreferrer"
           className="inline-flex items-center justify-center px-4 py-2 rounded-md bg-white text-accent font-semibold"
         >
           Book Now
