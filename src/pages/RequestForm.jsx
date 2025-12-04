@@ -233,12 +233,12 @@ async function submitToApi(formData) {
               {errors.serviceType && <p className="help text-red-600">{errors.serviceType}</p>}
 
               <textarea name="details" className="input" rows="3" value={formData.details} onChange={handleChange} placeholder="Additional details (optional)"></textarea>
-
+{/* 
               <div>
                 <label className="label">Upload images (optional)</label>
                 <input type="file" name="images" accept="image/*" multiple onChange={handleChange} className="input" />
                 <p className="help">Images help us estimate time. We store images in Cloudinary.</p>
-              </div>
+              </div> */}
             </div>
           </div>
 
