@@ -29,10 +29,10 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Splash Pro Cleaners",
-    image: "https://www.yoursite.com/logo.png",
+    image: "https://splashprocleaners.ca/static/media/splash-pro.d4fd5311515e67458546.webp",
     telephone: "+1-(250)612-2277",
     address: {
-      "@type": "PostalAddress",
+      "@type": "V9N 0H3",
       addressLocality: "Courtenay",
       addressRegion: "BC",
       addressCountry: "CA",

@@ -13,7 +13,7 @@ export default function Footer(){
           {/* TODO: Replace with confirmed business details */}
           <p className="text-sm text-gray-600 mt-2">Courtenay, BC</p>
           <a className="text-sm text-accent block" href="tel:+2506122277">(250) 612-2277</a>
-          <a className="text-sm text-accent" href="mailto:hello@splashpro.ca">hello@splashpro.ca</a>
+          <a className="text-sm text-accent" href="mailto:SplashProCleaners@gmail.com">SplashProCleaners@gmail.com</a>
         </div>
         <div>
           <h5 className="text-sm font-semibold">Quick Links</h5>
