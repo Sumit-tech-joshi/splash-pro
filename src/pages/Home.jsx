@@ -8,8 +8,23 @@ import ReviewsTrust from "../components/home/ReviewsTrust";
 import ServiceAreas from "../components/home/ServiceAreas";
 import BenefitSection from "../components/home/BenefitSection";
 import Faq from "../components/home/Faq";
-
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { scroller } from "react-scroll";
 export default function Home() {
+
+    const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      scroller.scrollTo(location.state.scrollTo, {
+        smooth: true,
+        duration: 600,
+        offset: -60,
+      });
+    }
+  }, [location]);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
