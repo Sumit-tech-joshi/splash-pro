@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -172,4 +173,85 @@
 .high-contrast * {
   color: #fff !important;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Loader backdrop matches site look to avoid white flash */
+.loader-backdrop {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); /* tweak to match your hero/header bg */
+  transition: opacity 220ms ease;
+}
+
+/* shimmer stripe across center logo (uses pseudo element) */
+.logo-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.logo-shimmer::after {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -60%;
+  width: 60%;
+  height: 120%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.86) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-14deg);
+  animation: shimmer 620ms ease forwards;
+}
+@keyframes shimmer {
+  to { left: 140%; }
+}
+
+/* sparkles */
+.sparkle {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 30% 30%, #fff 0%, rgba(255,255,255,0.95) 40%, rgba(255,255,255,0.18) 100%);
+  filter: drop-shadow(0 6px 14px rgba(255,255,255,0.65));
+  opacity: 0;
+  will-change: transform, opacity;
+  transform-origin: center;
+}
+
+/* dynamic positions and timings - for up to 12 sparkles */
+.sparkle-0  { top: 38%; left: 50%; animation: sparkle-pop .85s ease-out .02s forwards, sparkle-drift 1.1s linear .06s forwards; }
+.sparkle-1  { top: 30%; left: 62%; animation: sparkle-pop .85s ease-out .05s forwards, sparkle-drift 1.15s linear .10s forwards; }
+.sparkle-2  { top: 55%; left: 44%; animation: sparkle-pop .85s ease-out .09s forwards, sparkle-drift 1.0s linear .14s forwards; }
+.sparkle-3  { top: 47%; left: 35%; animation: sparkle-pop .85s ease-out .03s forwards, sparkle-drift 1.1s linear .08s forwards; }
+.sparkle-4  { top: 60%; left: 62%; animation: sparkle-pop .85s ease-out .07s forwards, sparkle-drift .95s linear .12s forwards; }
+.sparkle-5  { top: 50%; left: 70%; animation: sparkle-pop .85s ease-out .02s forwards, sparkle-drift 1.25s linear .16s forwards; }
+.sparkle-6  { top: 45%; left: 55%; animation: sparkle-pop .85s ease-out .01s forwards, sparkle-drift 1.0s linear .06s forwards; }
+.sparkle-7  { top: 35%; left: 40%; animation: sparkle-pop .85s ease-out .12s forwards, sparkle-drift 1.15s linear .20s forwards; }
+.sparkle-8  { top: 52%; left: 30%; animation: sparkle-pop .85s ease-out .14s forwards, sparkle-drift 1.05s linear .24s forwards; }
+.sparkle-9  { top: 38%; left: 66%; animation: sparkle-pop .85s ease-out .08s forwards, sparkle-drift 1.3s linear .18s forwards; }
+.sparkle-10 { top: 42%; left: 58%; animation: sparkle-pop .85s ease-out .10s forwards, sparkle-drift 1.1s linear .20s forwards; }
+.sparkle-11 { top: 46%; left: 68%; animation: sparkle-pop .85s ease-out .11s forwards, sparkle-drift 1.2s linear .22s forwards; }
+
+/* sparkle animations */
+@keyframes sparkle-pop {
+  0% { transform: scale(.2) rotate(0deg); opacity: 0; filter: blur(1px); }
+  45% { transform: scale(1.3) rotate(22deg); opacity: 1; filter: blur(0); }
+  100% { transform: scale(1) rotate(0deg); opacity: .95; }
+}
+@keyframes sparkle-drift {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-20px) scale(.9); opacity: 0; }
+}
+
+/* small header logo pop for landing effect */
+.header-logo-landing {
+  animation: header-pop 420ms cubic-bezier(.2,.9,.3,1);
+}
+@keyframes header-pop {
+  0% { transform: scale(.8); opacity: 0; }
+  60% { transform: scale(1.06); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* helper: hide header logo during loader */
+.hidden-during-loader { opacity: 0 !important; pointer-events: none !important; }
+
+/* reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  .sparkle, .logo-shimmer, .header-logo-landing { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
 }
